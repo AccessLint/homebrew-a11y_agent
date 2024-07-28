@@ -1,8 +1,8 @@
 class A11yAgent < Formula
   desc "AI agent that fixes accessibility issues"
   homepage "https://github.com/accesslint/a11y-agent"
-  url "https://github.com/AccessLint/a11y-agent/releases/download/v0.0.3/a11y_agent-0.0.3.tar.xz"
-  sha256 "6b01bd85fd5e764fd38595d305442d23afb40eff7357cba7b1c229fb9afc366a"
+  url "https://github.com/AccessLint/a11y-agent/releases/download/v0.0.4/a11y_agent-0.0.4.tar.xz"
+  sha256 "d605b187d923dbd3f4ad0641f7243bf72593604bcd6a742588da97321093aa85"
 
   depends_on "ruby"
 
