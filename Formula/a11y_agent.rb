@@ -12,7 +12,6 @@ class A11yAgent < Formula
     # Extract all files to libexec, which is a common Homebrew practice for third-party tools
     libexec.install Dir["*"]
 
-    system "bundle", "install", "--without", "development"
     system "gem", "build", "a11y_agent.gemspec"
     system "gem", "install", "--ignore-dependencies", "a11y_agent-0.0.6.gem"
 
