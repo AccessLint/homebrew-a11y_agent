@@ -1,16 +1,21 @@
 class A11yAgent < Formula
   desc "AI agent that fixes accessibility issues"
   homepage "https://github.com/accesslint/a11y-agent"
-  url "https://github.com/AccessLint/a11y-agent/releases/download/v0.0.8/a11y_agent-0.0.8.tar.xz"
-  sha256 "03f70ebf3c80a43f553e882abf199ff8008fdf8277a2858eb007fe08d4a7b0d4"
+  url "https://github.com/AccessLint/a11y-agent/releases/download/v0.0.10/a11y_agent-0.0.10.tar.xz"
+  sha256 "790bc754a018ae19ea3cdd36da7bdcea0b53bed2ecf9dd79b6f4c5f5aeded462"
 
   depends_on "ruby"
+  depends_on "node"
 
   def install
     ENV["GEM_HOME"] = libexec
 
     # Extract all files to libexec, which is a common Homebrew practice for third-party tools
     libexec.install Dir["*"]
+
+    system "bundle", "install", "--gemfile", libexec/"Gemfile"
+    system "gem", "build", libexec/"a11y_agent.gemspec"
+    system "gem", "install", "--ignore-dependencies", "a11y_agent-0.0.10.gem"
 
     bin.install libexec/"exe/a11y_agent"
     bin.env_script_all_files(libexec/"exe", GEM_HOME: ENV.fetch("GEM_HOME", nil))
